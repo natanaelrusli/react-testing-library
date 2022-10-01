@@ -7,7 +7,7 @@ test('inputs should be initially empty', () => {
   // RTL queries
   // https://testing-library.com/docs/queries/about
   const emailInputElement = screen.getByRole('textbox')
-  const passwordInputElement = screen.getByLabelText(/password/i)
+  const passwordInputElement = screen.getByLabelText('Password')
   const confirmPasswordInputElement = screen.getByLabelText(/confirm password/i)
   
   expect(emailInputElement.value).toBe('')
