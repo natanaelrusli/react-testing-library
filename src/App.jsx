@@ -8,7 +8,12 @@ function App() {
           <label htmlFor="email" className='form-label'>
             Email address
           </label>
-          <input type="email" id='email' name='email' className='form-control' />
+          <input
+            type="email"
+            id='email'
+            name='email'
+            className='form-control'
+          />
         </div>
 
         <div className='mb-3'>
