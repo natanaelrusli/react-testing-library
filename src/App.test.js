@@ -43,6 +43,14 @@ const typeIntoForm = ({ email, password, confirmPassword }) => {
   }
 }
 
+const clickSubmitBtn = () => {
+  const submitBtnElement = screen.getByRole('button', {
+    name: /submit/i
+  })
+
+  userEvent.click(submitBtnElement)
+}
+
 test('inputs should be initially empty', () => {
   // RTL queries
   // https://testing-library.com/docs/queries/about
@@ -85,9 +93,6 @@ test('should show email error message on invalid email', () => {
   const invalidEmail = 'invalid.com'
   // because there are 2 expect in the test, we should use query so it will not throw an error
   const invalidEmailLabelElement = screen.queryByText(/the email you input is invalid/i)
-  const submitBtnElement = screen.getByRole('button', {
-    name: /submit/i
-  })
 
   typeIntoForm({ email: '' })
 
@@ -97,7 +102,8 @@ test('should show email error message on invalid email', () => {
   typeIntoForm({
     email: invalidEmail
   })
-  userEvent.click(submitBtnElement)
+
+  clickSubmitBtn()
 
   // It should be queried again because initially it is null, so we need to query it again once it shown
   const invalidEmailLabelElementAgain = screen.queryByText(/the email you input is invalid/i)
@@ -113,9 +119,6 @@ test('should show password error if password is less than 5 characters', () => {
   const passwordErrorElement = screen.queryByText(
       /The password you entered should contain 5 or more characters/i
   )
-  const submitBtnElement = screen.getByRole('button', {
-    name: /submit/i
-  })
 
   expect(passwordErrorElement).not.toBeInTheDocument()
 
@@ -124,7 +127,7 @@ test('should show password error if password is less than 5 characters', () => {
     password: invalidPassword
   })
 
-  userEvent.click(submitBtnElement)
+  clickSubmitBtn()
 
   const passwordErrorElementAgain = screen.queryByText(
     /the password you entered should contain 5 or more characters/i
@@ -142,10 +145,6 @@ test('should show confirm password error when passwords dont match', () => {
     /the passwords don't match. try again/i
   )
 
-  const submitBtnElement = screen.getByRole('button', {
-    name: /submit/i
-  })
-
   typeIntoForm({
     email: validEmail,
     password: validPassword,
@@ -154,7 +153,7 @@ test('should show confirm password error when passwords dont match', () => {
 
   expect(confirmPasswordErrorElement).not.toBeInTheDocument()
 
-  userEvent.click(submitBtnElement)
+  clickSubmitBtn()
 
   const confirmPasswordErrorElementAgain = screen.queryByText(
     /the passwords don't match. try again/i
@@ -176,17 +175,13 @@ test('should show no error message if every input is correct', () => {
       /the passwords don't match. try again/i
   )
 
-  const submitBtnElement = screen.getByRole('button', {
-    name: /submit/i
-  })
-
   typeIntoForm({
     email: validEmail,
     password: validPassword,
     confirmPassword: validConfirmPassword
   })
 
-  userEvent.click(submitBtnElement)
+  clickSubmitBtn()
 
   expect(confirmPasswordErrorElement).not.toBeInTheDocument()
   expect(emailErrorlElement).not.toBeInTheDocument()
