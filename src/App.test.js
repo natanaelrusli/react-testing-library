@@ -119,8 +119,9 @@ test('should show confirm password error when passwords dont match', () => {
   userEvent.type(emailInputElement, 'nael@email.com')
 
   expect(confirmPasswordErrorElement).not.toBeInTheDocument()
-  userEvent.type(passwordInputElement, '123')
-  userEvent.type(confirmPasswordInputElement, '12345')
+
+  userEvent.type(passwordInputElement, '12345')
+  userEvent.type(confirmPasswordInputElement, '123456')
 
   userEvent.click(submitBtnElement)
 
