@@ -69,3 +69,33 @@ test('should show email error message on invalid email', () => {
   // https://www.npmjs.com/package/@testing-library/jest-dom
   expect(invalidEmailLabelElementAgain).toBeInTheDocument()
 })
+
+test('should show password error if password is less than 5 characters', () => {
+  render(<App />)
+  const expectedEmail = 'nael@gmail.com'
+
+  const emailInputElement = screen.getByRole('textbox', {
+    name: /email/i
+  })
+  const passwordInputElement = screen.getByLabelText('Password')
+  const passwordErrorElement = screen.queryByText(
+    /the password you entered should contain 5 or more characters/i
+  )
+  const submitBtnElement = screen.getByRole('button', {
+    name: /submit/i
+  })
+
+  userEvent.type(emailInputElement, expectedEmail)
+
+  expect(passwordErrorElement).not.toBeInTheDocument()
+  
+  userEvent.type(passwordInputElement, '123')
+
+  userEvent.click(submitBtnElement)
+  
+  const passwordErrorElementAgain = screen.queryByText(
+    /the password you entered should contain 5 or more characters/i
+  )
+
+  expect(passwordErrorElementAgain).toBeInTheDocument()
+})
