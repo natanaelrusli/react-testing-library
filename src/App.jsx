@@ -24,6 +24,8 @@ function App() {
     // https://www.npmjs.com/package/validator
     if (!validator.isEmail(signUpInput.email)) {
       return setError('The email you input is invalid')
+    } else if (signUpInput.password.length < 5) {
+      return setError('The password you entered should contain 5 or more characters')
     }
   }
 
