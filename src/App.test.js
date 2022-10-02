@@ -60,82 +60,90 @@ describe('App', () => {
     expect(screen.getByLabelText(/confirm password/i).value).toBe('')
   })
 
-  test('should be able to type an email', () => {
-    let email, expectedValue
-    email = expectedValue = 'nael@gmail.com'
+  describe('Input data', () => {
+    test('should be able to type an email', () => {
+      let email, expectedValue
+      email = expectedValue = 'nael@gmail.com'
 
-    const { emailInputElement } = typeIntoForm(
-        {email: email}
-    )
-    expect(emailInputElement.value).toBe(expectedValue)
-  })
-
-  test('should be able to type password', () => {
-    let password, expectedValue
-    password = expectedValue = 'password'
-
-    const { passwordInputElement } = typeIntoForm({ password: password })
-    expect(passwordInputElement.value).toBe(expectedValue)
-  })
-
-  test('should be able to type confirm password', () => {
-    let confirmPassword, expectedValue
-    confirmPassword = expectedValue = 'password'
-
-    const { confirmPasswordElement } = typeIntoForm({ confirmPassword: confirmPassword })
-    expect(confirmPasswordElement.value).toBe(expectedValue)
-  })
-
-  test('should show email error message on invalid email', () => {
-    const invalidEmail = 'invalid.com'
-    typeIntoForm({ email: '' })
-
-    // test if the error not showing at the beginning
-    // because there are 2 expect in the test, we should use query so it will not throw an error
-    expect(screen.queryByText(/the email you input is invalid/i)).not.toBeInTheDocument()
-
-    typeIntoForm({
-      email: invalidEmail
+      const { emailInputElement } = typeIntoForm(
+          {email: email}
+      )
+      expect(emailInputElement.value).toBe(expectedValue)
     })
 
-    clickSubmitBtn()
+    test('should be able to type password', () => {
+      let password, expectedValue
+      password = expectedValue = 'password'
 
-    // It should be queried again because initially it is null, so we need to query it again once it shown
-    // https://www.npmjs.com/package/@testing-library/jest-dom
-    expect(screen.getByText(/the email you input is invalid/i)).toBeInTheDocument()
-  })
-
-  test('should show password error if password is less than 5 characters', () => {
-    const email = 'nael@gmail.com'
-    const invalidPassword = '1234'
-
-    expect(screen.queryByText(
-        /The password you entered should contain 5 or more characters/i
-    )).not.toBeInTheDocument()
-
-    typeIntoForm({
-      email: email,
-      password: invalidPassword
+      const { passwordInputElement } = typeIntoForm({ password: password })
+      expect(passwordInputElement.value).toBe(expectedValue)
     })
 
-    clickSubmitBtn()
-    expect(screen.getByText(/the password you entered should contain 5 or more characters/i)).toBeInTheDocument()
+    test('should be able to type confirm password', () => {
+      let confirmPassword, expectedValue
+      confirmPassword = expectedValue = 'password'
+
+      const { confirmPasswordElement } = typeIntoForm({ confirmPassword: confirmPassword })
+      expect(confirmPasswordElement.value).toBe(expectedValue)
+    })
   })
 
-  test('should show confirm password error when passwords dont match', () => {
-    const validEmail = 'nael@gmail.com'
-    const validPassword = '12345678'
-    const invalidCofirmPassword = '12345'
-
-    typeIntoForm({
-      email: validEmail,
-      password: validPassword,
-      confirmPassword: invalidCofirmPassword
+  describe('Error handling', () => {
+    beforeEach(() => {
+      console.log('This is beforeEach inside of Error handling group')
     })
 
-    expect(screen.queryByText(/the passwords don't match. try again/i)).not.toBeInTheDocument()
-    clickSubmitBtn()
-    expect(screen.getByText(/the passwords don't match. try again/i)).toBeInTheDocument()
+    test('should show email error message on invalid email', () => {
+      const invalidEmail = 'invalid.com'
+      typeIntoForm({ email: '' })
+
+      // test if the error not showing at the beginning
+      // because there are 2 expect in the test, we should use query so it will not throw an error
+      expect(screen.queryByText(/the email you input is invalid/i)).not.toBeInTheDocument()
+
+      typeIntoForm({
+        email: invalidEmail
+      })
+
+      clickSubmitBtn()
+
+      // It should be queried again because initially it is null, so we need to query it again once it shown
+      // https://www.npmjs.com/package/@testing-library/jest-dom
+      expect(screen.getByText(/the email you input is invalid/i)).toBeInTheDocument()
+    })
+
+    test('should show password error if password is less than 5 characters', () => {
+      const email = 'nael@gmail.com'
+      const invalidPassword = '1234'
+
+      expect(screen.queryByText(
+          /The password you entered should contain 5 or more characters/i
+      )).not.toBeInTheDocument()
+
+      typeIntoForm({
+        email: email,
+        password: invalidPassword
+      })
+
+      clickSubmitBtn()
+      expect(screen.getByText(/the password you entered should contain 5 or more characters/i)).toBeInTheDocument()
+    })
+
+    test('should show confirm password error when passwords dont match', () => {
+      const validEmail = 'nael@gmail.com'
+      const validPassword = '12345678'
+      const invalidCofirmPassword = '12345'
+
+      typeIntoForm({
+        email: validEmail,
+        password: validPassword,
+        confirmPassword: invalidCofirmPassword
+      })
+
+      expect(screen.queryByText(/the passwords don't match. try again/i)).not.toBeInTheDocument()
+      clickSubmitBtn()
+      expect(screen.getByText(/the passwords don't match. try again/i)).toBeInTheDocument()
+    })
   })
 
   test('should show no error message if every input is correct', () => {
