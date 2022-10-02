@@ -63,6 +63,9 @@ test('should show email error message on invalid email', () => {
   userEvent.type(emailInputElement, invalidEmail)
   userEvent.click(submitBtnElement)
 
-  // https://www.npmjs.com/package/@testing-library/jest-dom#tobedisabled
-  expect(invalidEmailLabelElement).toBeInTheDocument()
+  // It should be queried again because initially it is null, so we need to query it again once it shown
+  const invalidEmailLabelElementAgain = screen.queryByText(/the email you input is invalid/i)
+
+  // https://www.npmjs.com/package/@testing-library/jest-dom
+  expect(invalidEmailLabelElementAgain).toBeInTheDocument()
 })

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import validator from 'validator';
 
 function App() {
   const [signUpInput, setSignUpInput] = useState({
@@ -8,11 +9,22 @@ function App() {
     confirmPassword: ''
   })
 
+  const [error, setError] = useState('')
+
   const handleChange = (e) => {
     setSignUpInput({
       ...signUpInput,
       [e.target.name]: e.target.value
     })
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault()
+    // JS validator
+    // https://www.npmjs.com/package/validator
+    if (!validator.isEmail(signUpInput.email)) {
+      return setError('The email you input is invalid')
+    }
   }
 
   return (
@@ -60,7 +72,11 @@ function App() {
           />
         </div>      
 
-        <button type='submit'>Submit</button>  
+        {
+          error && <p className='text-danger'>{error}</p>
+        }
+
+        <button type='submit' onClick={handleClick}>Submit</button>  
       </form>
     </div>
   );
