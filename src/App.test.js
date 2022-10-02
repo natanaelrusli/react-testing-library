@@ -45,3 +45,24 @@ test('should be able to type confirm password', () => {
   userEvent.type(passwordInputElement, 'password')
   expect(passwordInputElement.value).toBe(expectedValue)
 })
+
+test('should show email error message on invalid email', () => {
+  render(<App />)
+  const invalidEmail = 'invalid.com'
+  // because there are 2 expect in the test, we should use query so it will not throw an error
+  const invalidEmailLabelElement = screen.queryByText(/the email you input is invalid/i)
+  const submitBtnElement = screen.getByRole('button', {
+    name: /submit/i
+  })
+  const emailInputElement = screen.getByRole('textbox', {
+    name: /email/i
+  })
+
+  // test if the error not showing at the beginning
+  expect(invalidEmailLabelElement).not.toBeInTheDocument()
+  userEvent.type(emailInputElement, invalidEmail)
+  userEvent.click(submitBtnElement)
+
+  // https://www.npmjs.com/package/@testing-library/jest-dom#tobedisabled
+  expect(invalidEmailLabelElement).toBeInTheDocument()
+})
