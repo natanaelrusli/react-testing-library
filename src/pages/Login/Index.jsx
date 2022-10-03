@@ -5,9 +5,11 @@ import {
   FormInput,
   FormItem,
   FormLabel,
+  HeaderText,
   LoginButton,
   SignupLink
 } from "./style";
+import { Card } from '../../components/containers/Card'
 import validator from "validator";
 
 function Index() {
@@ -41,34 +43,37 @@ function Index() {
   };
 
   return (
-    <FormContainer>
-      <FormItem>
-        <FormLabel htmlFor="email">Email</FormLabel>
-        <FormInput
-          data-testid="emailInput"
-          name="email"
-          id="email"
-          onChange={handleChange}
-          value={loginInput.email}
-        />
-      </FormItem>
-      <FormItem>
-        <FormLabel htmlFor="password">Password</FormLabel>
-        <FormInput
-          data-testid="passwordInput"
-          name="password"
-          id="password"
-          type={"password"}
-          onChange={handleChange}
-          value={loginInput.password}
-        />
-      </FormItem>
-      <ErrorMessage>{error}</ErrorMessage>
-      <LoginButton onClick={handleClick} className="pointer">
-        Login
-      </LoginButton>
-      <p>Don't have an account? Sign Up <SignupLink href="/">here</SignupLink></p>
-    </FormContainer>
+    <Card>
+      <FormContainer>
+        <HeaderText>Login</HeaderText>
+        <FormItem>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormInput
+            data-testid="emailInput"
+            name="email"
+            id="email"
+            onChange={handleChange}
+            value={loginInput.email}
+          />
+        </FormItem>
+        <FormItem>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <FormInput
+            data-testid="passwordInput"
+            name="password"
+            id="password"
+            type={"password"}
+            onChange={handleChange}
+            value={loginInput.password}
+          />
+        </FormItem>
+        <ErrorMessage>{error}</ErrorMessage>
+        <LoginButton onClick={handleClick} className="pointer">
+          Login
+        </LoginButton>
+        <p>Don't have an account? Sign Up <SignupLink href="/">here</SignupLink></p>
+      </FormContainer>
+    </Card>
   );
 }
 

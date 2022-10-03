@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { theme } from '../../components/Theme'
 
 export const FormContainer = styled.div`
   display: flex;
@@ -7,6 +8,7 @@ export const FormContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  padding: 20px;
 `
 
 export const FormItem = styled.div`
@@ -101,4 +103,11 @@ export const SignupLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   color: #FFA500;
+`
+
+export const HeaderText = styled.h1`
+  color: ${theme.colors.orange};
+  margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: center;
 `

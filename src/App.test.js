@@ -45,7 +45,7 @@ const typeIntoForm = ({ email, password, confirmPassword }) => {
 
 const clickSubmitBtn = () => {
   const submitBtnElement = screen.getByRole('button', {
-    name: /submit/i
+    name: /signup/i
   })
 
   userEvent.click(submitBtnElement)

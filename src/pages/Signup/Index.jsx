@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import validator from 'validator'
-import { LoginLink } from './style'
+import { Card } from '../../components/containers/Card'
+import { FormControl, HeaderText, LoginLink, SignupButton } from './style'
 
 function Index() {
   const [signUpInput, setSignUpInput] = useState({
@@ -32,7 +33,9 @@ function Index() {
   }
 
   return (
-    <div className="container my-5">
+    <Card>
+      <div className="container my-5">
+      <HeaderText>Sign Up</HeaderText>
       <form action="" className='mb-3'>
         <div className='mb-3'>
           <label htmlFor="email" className='form-label'>
@@ -79,11 +82,13 @@ function Index() {
         {
           error && <p className='text-danger'>{error}</p>
         }
-
-        <button type='submit' onClick={handleClick}>Submit</button>  
+        <FormControl>
+          <SignupButton type='submit' onClick={handleClick}>Signup</SignupButton>  
+        </FormControl>
       </form>
       <p>Already have an account? Login <LoginLink href="/login">here</LoginLink></p>
     </div>
+    </Card>
   )
 }
 
