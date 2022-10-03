@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing snapshot for login component 1`] = `
+<div
+  className="sc-bcXHqe cFtqiI"
+>
+  <div
+    className="sc-gswNZR fiWvVF"
+  >
+    <p
+      className="sc-dkrFOg gboSJr"
+      htmlFor="email"
+    >
+      Email
+    </p>
+    <input
+      className="sc-hLBbgP dnwCP"
+      data-testid="emailInput"
+      id="email"
+      name="email"
+      onChange={[Function]}
+      value=""
+    />
+  </div>
+  <div
+    className="sc-gswNZR fiWvVF"
+  >
+    <p
+      className="sc-dkrFOg gboSJr"
+      htmlFor="password"
+    >
+      Password
+    </p>
+    <input
+      className="sc-hLBbgP dnwCP"
+      data-testid="passwordInput"
+      id="password"
+      name="password"
+      onChange={[Function]}
+      type="password"
+      value=""
+    />
+  </div>
+  <p
+    className="sc-kDvujY hbSaTb"
+  />
+  <button
+    className="sc-ftTHYK sc-pyfCe koensh fTUoFM pointer"
+    onClick={[Function]}
+  >
+    Login
+  </button>
+  <p>
+    Don't have an account? Sign Up 
+    <a
+      className="sc-ipEyDJ dNNBrC"
+      href="/"
+    >
+      here
+    </a>
+  </p>
+</div>
+`;
