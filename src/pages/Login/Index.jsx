@@ -6,6 +6,7 @@ import {
   FormItem,
   FormLabel,
   LoginButton,
+  SignupLink
 } from "./style";
 import validator from "validator";
 
@@ -66,6 +67,7 @@ function Index() {
       <LoginButton onClick={handleClick} className="pointer">
         Login
       </LoginButton>
+      <p>Don't have an account? Sign Up <SignupLink href="/">here</SignupLink></p>
     </FormContainer>
   );
 }

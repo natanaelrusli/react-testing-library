@@ -95,3 +95,10 @@ export const ErrorMessage = styled.p`
   text-align: left;
   color: red;
 `
+
+export const SignupLink = styled.a`
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  color: #FFA500;
+`

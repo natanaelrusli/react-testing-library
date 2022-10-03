@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import validator from 'validator'
+import { LoginLink } from './style'
 
 function Index() {
   const [signUpInput, setSignUpInput] = useState({
@@ -32,7 +33,7 @@ function Index() {
 
   return (
     <div className="container my-5">
-      <form action="">
+      <form action="" className='mb-3'>
         <div className='mb-3'>
           <label htmlFor="email" className='form-label'>
             Email address
@@ -81,6 +82,7 @@ function Index() {
 
         <button type='submit' onClick={handleClick}>Submit</button>  
       </form>
+      <p>Already have an account? Login <LoginLink href="/login">here</LoginLink></p>
     </div>
   )
 }
