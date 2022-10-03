@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import App from './App'
 
 beforeEach(() => {
   // eslint-disable-next-line testing-library/no-render-in-setup
@@ -55,7 +55,9 @@ describe('App', () => {
   test('inputs should be initially empty', () => {
     // RTL queries
     // https://testing-library.com/docs/queries/about
-    expect(screen.getByRole('textbox').value).toBe('')
+    expect(screen.getByRole('textbox', {
+      name: /email/i
+    }).value).toBe('')
     expect(screen.getByLabelText('Password').value).toBe('')
     expect(screen.getByLabelText(/confirm password/i).value).toBe('')
   })
