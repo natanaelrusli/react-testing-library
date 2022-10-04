@@ -37,8 +37,8 @@ function Index() {
       return setError(
         "The password you entered should contain 5 or more characters"
       );
-    } else if (loginInput.password !== loginInput.confirmPassword) {
-      return setError("The passwords don't match. try again");
+    } else {
+      return setError(null)
     }
   };
 

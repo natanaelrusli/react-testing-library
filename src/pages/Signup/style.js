@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../components/Theme"
+import { theme } from "../../components/constants/Theme"
 
 export const LoginLink = styled.a`
   color: black;

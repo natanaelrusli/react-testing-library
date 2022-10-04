@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { theme } from '../../components/Theme'
+import { theme } from '../../components/constants/Theme'
 
 export const FormContainer = styled.div`
   display: flex;

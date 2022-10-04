@@ -2,62 +2,71 @@
 
 exports[`snapshot testing snapshot for login component 1`] = `
 <div
-  className="sc-bcXHqe cFtqiI"
+  className="sc-eDWCr gkukLP"
 >
   <div
-    className="sc-gswNZR fiWvVF"
+    className="sc-bcXHqe lcQnKs"
   >
+    <h1
+      className="sc-csuSiG jyxFfD"
+    >
+      Login
+    </h1>
+    <div
+      className="sc-gswNZR fiWvVF"
+    >
+      <p
+        className="sc-dkrFOg gboSJr"
+        htmlFor="email"
+      >
+        Email
+      </p>
+      <input
+        className="sc-hLBbgP dnwCP"
+        data-testid="emailInput"
+        id="email"
+        name="email"
+        onChange={[Function]}
+        value=""
+      />
+    </div>
+    <div
+      className="sc-gswNZR fiWvVF"
+    >
+      <p
+        className="sc-dkrFOg gboSJr"
+        htmlFor="password"
+      >
+        Password
+      </p>
+      <input
+        className="sc-hLBbgP dnwCP"
+        data-testid="passwordInput"
+        id="password"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+    </div>
     <p
-      className="sc-dkrFOg gboSJr"
-      htmlFor="email"
-    >
-      Email
-    </p>
-    <input
-      className="sc-hLBbgP dnwCP"
-      data-testid="emailInput"
-      id="email"
-      name="email"
-      onChange={[Function]}
-      value=""
+      className="sc-kDvujY hbSaTb"
     />
-  </div>
-  <div
-    className="sc-gswNZR fiWvVF"
-  >
-    <p
-      className="sc-dkrFOg gboSJr"
-      htmlFor="password"
+    <button
+      className="sc-ftTHYK sc-pyfCe koensh fTUoFM pointer"
+      onClick={[Function]}
     >
-      Password
+      Login
+    </button>
+    <p>
+      Don't have an account? Sign Up 
+      <a
+        className="sc-ipEyDJ dNNBrC"
+        href="/"
+      >
+        here
+      </a>
     </p>
-    <input
-      className="sc-hLBbgP dnwCP"
-      data-testid="passwordInput"
-      id="password"
-      name="password"
-      onChange={[Function]}
-      type="password"
-      value=""
-    />
   </div>
-  <p
-    className="sc-kDvujY hbSaTb"
-  />
-  <button
-    className="sc-ftTHYK sc-pyfCe koensh fTUoFM pointer"
-    onClick={[Function]}
-  >
-    Login
-  </button>
-  <p>
-    Don't have an account? Sign Up 
-    <a
-      className="sc-ipEyDJ dNNBrC"
-      href="/"
-    >
-      here
-    </a>
-  </p>
 </div>
 `;
